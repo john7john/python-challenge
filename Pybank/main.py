@@ -11,17 +11,27 @@ with open(filepath, 'r') as csvf:
     header = next(csvreader)
     months = 0
     sum = 0
-    
+    total_change = 0
+    profit = []
     for row in csvreader:
-        
         date = row[0]
         pl = int(row[1])
         months +=1
         sum = pl + sum 
-    avg = months/sum
-    print(f"Total Months :{months}")
-    print(f"Total  :${sum}")
-    print(f"Total  :${avg}")
+    
+
+
+
+         # diff =  int(row[1]) - int(row[1])
+        # profit.append(int(diff))
+        
+        
+        
+print(profit)
+    
+    # print(f"Total Months :{months}")
+    # print(f"Total  :${sum}")
+    # print(f"Total  :${avg}")
 
         
         # count=0
