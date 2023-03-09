@@ -13,37 +13,65 @@ with open(filepath, 'r') as csvf:
     sum1 = 0
     sum = 0
     total_change = 0
-    dic = []
-    
+    diffc = []
+    date= []
     profit = []
     data = []
+    d=[]
+    final = []
+
+    arr=[]
+
+    # prev_net=int(header[1])
+
     for row in csvreader:
-        
-        date = row[0]
+
+        # print(row[1])
+        # net_change=int(row[1])-prev_net
+        # prev_net=int(row[1])
+        # arr+=[net_change]
+        # date = row[0]
         pl = int(row[1])
 
         months +=1
         sum = pl + sum 
         profit.append(pl)
+        date.append(row[0])
     
     for j in range(len(profit)):
         diff = profit[j] - profit[j-1]
-        dic.append(diff)
-    dic.pop(0)
+        diffc.append(diff)
+    # print(sum(diffc)/len(diffc))
+    diffc.pop(0)
     
-    for k in range(len(dic)):
-        sum1 = dic[k] + sum1
-    avg = sum1/len(dic)
+    for k in range(len(diffc)):
+        final.append([date[k],diffc[k]])
+        sum1 = diffc[k] + sum1
+    avg = sum1/len(diffc)
+    # print(diffc)
     
-    lrg = dic[0]
-    start = dic[0]
-    for g in range(len(dic)):               
-        if start < dic[g-1]:
-            start = dic[g-1]
-        if  lrg > dic[g-1]:
-            lrg = dic[g-1]  
+
+
+    low = diffc[0]
+    high = diffc[0]
+    
+    for g in range(len(diffc)):               
+        if high < diffc[g-1]:
+            high = diffc[g-1]
+    
+
+
+        if  low > diffc[g-1]:
+            low = diffc[g-1]  
+    
+       
+    # for r in final:
+    #      f = r[0]
+    #      sec = r[1]
+    #      if r[1] == low:  
+    
         
-    
+
 
 
 
@@ -55,8 +83,8 @@ with open(filepath, 'r') as csvf:
     print(f"Total Months :{months}")
     print(f"Total  :${sum}")
     print(f"Average Change  :{avg}")
-    print(f"Greatest Increase in Profits:{start}")
-    print(f"Greatest Decrease in Profits:{lrg}")
+    print(f"Greatest Increase in Profits:{high}")
+    print(f"Greatest Decrease in Profits:{low}")
    
         
         
