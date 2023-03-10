@@ -20,17 +20,10 @@ with open(filepath, 'r') as csvf:
     d=[]
     final = []
 
-    arr=[]
-
-    # prev_net=int(header[1])
 
     for row in csvreader:
 
-        # print(row[1])
-        # net_change=int(row[1])-prev_net
-        # prev_net=int(row[1])
-        # arr+=[net_change]
-        # date = row[0]
+        
         pl = int(row[1])
 
         months +=1
@@ -47,47 +40,29 @@ with open(filepath, 'r') as csvf:
     for k in range(len(diffc)):
         final.append([date[k],diffc[k]])
         sum1 = diffc[k] + sum1
-    avg = sum1/len(diffc)
+    avg = round(sum1/len(diffc),2)
     # print(diffc)
     
-
-
     low = diffc[0]
     high = diffc[0]
+    indexhigh = 0
+    indexlow = 0
+
     
     for g in range(len(diffc)):               
         if high < diffc[g-1]:
             high = diffc[g-1]
-    
+            indexhigh = g
 
 
         if  low > diffc[g-1]:
             low = diffc[g-1]  
-    
-       
-    # for r in final:
-    #      f = r[0]
-    #      sec = r[1]
-    #      if r[1] == low:  
-    
-        
-
-
-
-
-
-
-
-    
-    
+            indexlow = g
+     
     print(f"Total Months :{months}")
     print(f"Total  :${sum}")
-    print(f"Average Change  :{avg}")
-    print(f"Greatest Increase in Profits:{high}")
-    print(f"Greatest Decrease in Profits:{low}")
+    print(f"Average Change  :${avg}")
+    print(f"Greatest Increase in Profits:{date[indexhigh]} (${high})")
+    print(f"Greatest Decrease in Profits:{date[indexlow]} (${low})")
+    
    
-        
-        
-       
-
-       
