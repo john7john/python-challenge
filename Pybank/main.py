@@ -54,7 +54,7 @@ with open(filepath, 'r') as csvf:
     print(f"Greatest Increase in Profits:{date[indexhigh]} (${high})")
     print(f"Greatest Decrease in Profits:{date[indexlow]} (${low})")
     
-    with open(r"Pybank\Financial Analysis.txt","w") as out:                # Printing output to txt
+    with open("Pybank\Analysis\Financial Analysis.txt","w") as out:                # Printing output to txt
         writer = csv.writer(out)
         writer.writerow(["Financial Analysis"])
         writer.writerow(["--------------------"])

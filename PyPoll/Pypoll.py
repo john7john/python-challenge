@@ -9,7 +9,7 @@ can1 = []
 can2 = []
 can3 = []
 candidate = []
-with open(path,"r") as csvf:
+with open(path,"r") as csvf:                            # Reading csv file
     csvreader = csv.reader(csvf, delimiter=',')
     header = next(csvreader)
 
@@ -19,7 +19,7 @@ with open(path,"r") as csvf:
         candi.append(row[2])
         j+=1
     for x in candi:
-        if x not in candidate:          # j is the total votes 
+        if x not in candidate:          # j is the total number of votes 
             candidate.append(x)
         
     for can in candi:
@@ -61,15 +61,17 @@ with open(path,"r") as csvf:
     if canv3 > canv2 and canv3 > canv1:
         print(f" Winner is :{candidate[2]} ")
         c1 = (f" Winner is :{candidate[2]} ")
-    
-with open(r"PyPoll\Election result.txt","w") as out:                # Printing output to txt
+    print("--------------") 
+with open("Pypoll\Analysis\Election result.txt","w") as out:                # Printing output to txt
     writer = csv.writer(out)
     writer.writerow(["Election Results"])
+    writer.writerow(["------------------"])
     writer.writerow([f"Total Votes   :{j}"])
     writer.writerow([f"{candidate[0]} : {canv1}    ""%.3f%%" % (can1p)])
     writer.writerow([(f"{candidate[1]} : {canv2}    ""%.3f%%" % (can2p))])
     writer.writerow([(f"{candidate[2]} : {canv3}    ""%.3f%%" % (can3p))])
     writer.writerow([c1])
+    
                     
 
 
